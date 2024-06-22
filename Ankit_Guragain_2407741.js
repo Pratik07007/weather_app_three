@@ -85,12 +85,9 @@ const weatherforsevendays = async (city) => {
   }
 };
 
-//Get form and search bar element
-const form = document.getElementById("form");
-form.addEventListener("submit", submit);
 
-//function to handle form submission
-function submit(event) {
+const search = document.getElementById("form");
+search.addEventListener("click", () => {
   const searchedValue = document.getElementById("searchbar").value;
   if (!searchedValue) {
     alert("Enter a city to search");
@@ -98,5 +95,6 @@ function submit(event) {
   }
   fetchWeather(searchedValue);
   weatherforsevendays(searchedValue);
-  event.preventDefault();
-}
+});
+
+//function to handle form submission
