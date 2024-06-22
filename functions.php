@@ -1,6 +1,9 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
+
+
+
 function connect_database($host, $username, $password, $db)
 {
     try {
@@ -18,7 +21,7 @@ function connect_database($host, $username, $password, $db)
 
 function fetch_from_api_openweathermaps($city)
 {
-    $apiId = "f54929d4ba750560197d17505125a8ff";
+    $apiId = "653de78f3a1ed50c44ea46115bcde96f"; //api key from openWeatherMaps Api
     $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city . '&appid=' . $apiId . '&units=metric';
     $response = @file_get_contents($url);
     if ($response) {

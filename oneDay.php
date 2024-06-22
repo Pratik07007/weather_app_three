@@ -1,16 +1,8 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // Gives HTML the access to this PHP script in order to fetch data
+header("Access-Control-Allow-Origin: *");
 header("Content-Type:application/json"); // Set the visuals to JSON format (application/json)
-include"Pratik_Dhimal_2407779_01.php"; //includes all_functions.php to this php 
+include"functions.php"; //includes all_functions.php to this php 
 
-/**
- * Adds weather data to the database.
- *
- * parameter mixed     $connection MySQLi connection
- * parameter array $data       Weather data to be added to the database.
- *
- * return mixed Array containing error message if any.
- */
 function fetch_from_database($connection, $city)
 {
     try {
@@ -27,9 +19,9 @@ function fetch_from_database($connection, $city)
     }
 }
 
-function fetch_data($refreshtime)
+function fetch_data()
 {
-    $connection = connect_database("mysql2.serv00.com", "m2758_pratik", "Admin@123", "m2758_weather");
+    $connection =connect_database("localhost", "root", "", "weatherApp");
     if (isset($_GET["city"])) {
         if ($_GET["city"] == null) {
             echo '{"error": "No city provided please enter a city"}';
@@ -51,8 +43,7 @@ function fetch_data($refreshtime)
             } else { // If available in database
                 $latest_data = $response_database[0];
                 $time_of_response_latest_data = intval($latest_data["time_fetched"]);
-                // var_dump($time_of_response_latest_data);
-                if ((time() - $time_of_response_latest_data)>$refreshtime) {
+                if ((time() - $time_of_response_latest_data)>1000) {
                     $response = fetch_from_api_openweathermaps($city);
                     add_to_database($connection, $response);
                     $data = fetch_from_database($connection, $city);
@@ -68,5 +59,4 @@ function fetch_data($refreshtime)
     }
 }
 
-fetch_data(14400); // Refresh time = 4 hours
-
+fetch_data();

@@ -1,0 +1,206 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    height: 94.5vh;
+    background: url("https://github.com/Ankit9845/img/blob/main/pexels-johannes-plenio-1102915.jpg?raw=true")
+      top/cover no-repeat;
+  }
+
+  .pageone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .card {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 5);
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Translucent white background */
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+
+  .card-header {
+    background-color: #3fb0ac;
+    /* Sky Blue */
+    color: #ffffff;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card-content {
+    padding: 20px;
+    text-align: left;
+  }
+
+  .card-content img {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+
+  .card-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .card-content p {
+    margin: 8px 0;
+    color: #555;
+  }
+
+  .card-content h2 {
+    font-size: 28px;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  .card-content h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #777;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #searchbar {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input[type="search"]::placeholder {
+    color: #bbb;
+  }
+
+  button[type="submit"] {
+    text-indent: -999px;
+    overflow: hidden;
+    width: 50px;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' class='bi bi-search' viewBox='0 0 16 16' fill='white'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+      no-repeat center;
+    cursor: pointer;
+  }
+
+  .search-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-row input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .fotter {
+    position: absolute;
+    bottom: 0px;
+    color: aliceblue;
+    font-size: 2vw;
+  }
+
+  #weather {
+    font-size: 24px;
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: rgba(0, 255, 255, 0.294);
+    /* Translucent white background */
+    border-radius: 10px;
+    padding: 1px;
+    color: #333;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #weatherElement h1,
+  #weatherElement img,
+  #weatherElement p {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #weather h1 {
+    font-size: 40px;
+    margin-right: 6px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  #weather h4 {
+    margin: 15px 0;
+    color: #c92727;
+  }
+
+  #weather p {
+    margin: 15px 0;
+    color: #c92727;
+  }
+
+  #weather h2 {
+    font-size: 58px;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  #weather h3 {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #777;
+  }
+
+  .page2 {
+    height: 100vh;
+    width: 100vw;
+    background-color: royalblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  table,
+  tr,
+  td,
+  th {
+    border: 1px solid white;
+    padding: 1vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    #live {
+      grid-template-columns: 1fr;
+    }
+
+    #weather h1 {
+      font-size: 24;
+    }
+  }
