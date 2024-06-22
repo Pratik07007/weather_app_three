@@ -14,7 +14,7 @@ include "Pratik_Dhimal_2407779_01.php"; //includes main_functions.php to this ph
 function fetch_from_database($connection, $city)
 {
     try {
-        $result = $connection->query("SELECT * FROM weather_data WHERE city = '$city' GROUP by date ORDER BY time_fetched DESC limit 7");
+        $result = $connection->query("SELECT * FROM weatherData WHERE city = '$city' GROUP by date ORDER BY time_fetched DESC limit 7");
         if ($result) {
             $data = $result->fetch_all(MYSQLI_ASSOC);
             return ($data);

@@ -14,7 +14,7 @@ include"Pratik_Dhimal_2407779_01.php"; //includes all_functions.php to this php
 function fetch_from_database($connection, $city)
 {
     try {
-        $result = $connection->query("SELECT * FROM `weather_data`
+        $result = $connection->query("SELECT * FROM `weatherData`
         WHERE city='$city' ORDER BY `id` DESC LIMIT 1");
         if ($result) {
             $data = $result->fetch_all(MYSQLI_ASSOC);

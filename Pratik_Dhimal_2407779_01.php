@@ -46,7 +46,7 @@ function add_to_database($connection, $data)
         $icon = $data["weather"][0]["icon"];
         $date = date('Y-m-d', $timestamp);
         $time_fetched = time();
-        $connection->query("INSERT INTO `weather_data` (`city`, `country`, `temp`, `pressure`, `humidity`, `windspeed`, `timestamp`, `description`, `icon`,`date`,`time_fetched`) VALUES ('$city', '$country', '$temp', '$temp_high', '$temp_low', '$feelslike', '$pressure', '$humidity', '$windspeed', '$timestamp', '$description', '$icon','$date','$time_fetched'); ");
+        $connection->query("INSERT INTO `weatherData` (`city`, `country`, `temp`, `pressure`, `humidity`, `windspeed`, `timestamp`, `description`, `icon`,`date`,`time_fetched`) VALUES ('$city', '$country', '$temp','$pressure', '$humidity', '$windspeed', '$timestamp', '$description', '$icon','$date','$time_fetched'); ");
 
     } catch (Exception $th) {
         return ["error" => $th->getMessage()];
