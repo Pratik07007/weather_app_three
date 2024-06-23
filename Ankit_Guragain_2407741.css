@@ -4,7 +4,8 @@ body {
     text-align: center;
     margin: 0;
     height: 94.5vh;
-    background: url('https://github.com/Ankit9845/img/blob/main/pexels-johannes-plenio-1102915.jpg?raw=true') top/cover no-repeat;
+    background: url('https://images.newscientist.com/wp-content/uploads/2019/03/20115708/gettyimages-673747736.jpg') top/cover no-repeat;
+
 }
 
 .pageone {
@@ -121,7 +122,7 @@ button[type="submit"] {
 .fotter {
     position: absolute;
     bottom: 0px;
-    color: aliceblue;
+    color: black;
     font-size: 2vw;
 }
 
