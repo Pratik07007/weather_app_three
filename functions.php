@@ -21,7 +21,7 @@ function connect_database($host, $username, $password, $db)
 
 function fetch_from_api_openweathermaps($city)
 {
-    $apiId = "653de78f3a1ed50c44ea46115bcde96f"; //api key from openWeatherMaps Api
+    $apiId = "653de78f3a1ed50c44ea46115bcde96f";
     $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city . '&appid=' . $apiId . '&units=metric';
     $response = @file_get_contents($url);
     if ($response) {

@@ -33,7 +33,7 @@ function insertWeatherDetails(data) {
 
 //function to fetch weather data from the OpenWeatherMap API
 function fetchWeather(city) {
-  const apiUrl = `http://localhost/weather_app_three/oneDay.php?city=${city}`;
+  const apiUrl = `./oneDay.php?city=${city}`;
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -58,7 +58,7 @@ window.onload = function () {
 const weatherforsevendays = async (city) => {
   try {
     const response = await fetch(
-      `http://localhost/weather_app_three/sevenDays.php?city=${city}`
+      `./sevenDays.php?city=${city}`
     );
     const data = await response.json();
     //   console.log(data);
