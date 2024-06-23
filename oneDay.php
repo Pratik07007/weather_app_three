@@ -21,7 +21,7 @@ function fetch_from_database($connection, $city)
 
 function fetch_data()
 {
-    $connection =connect_database("mysql2.serv00.com", "m33384_anket", "H99vToz&c81@K%pHbyPg", "m3384_weatherApp");
+    $connection =connect_database("mysql2.serv00.com", "m33384_anket", "m3384_weatherApp", "m3384_weatherApp");
     if (isset($_GET["city"])) {
         if ($_GET["city"] == null) {
             echo '{"error": "No city provided please enter a city"}';
