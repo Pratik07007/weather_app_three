@@ -57,9 +57,7 @@ window.onload = function () {
 
 const weatherforsevendays = async (city) => {
   try {
-    const response = await fetch(
-      `./sevenDays.php?city=${city}`
-    );
+    const response = await fetch(`./sevenDays.php?city=${city}`);
     const data = await response.json();
     //   console.log(data);
     localStorage.setItem(`sevenDays${city}`, JSON.stringify(data));
@@ -85,7 +83,6 @@ const weatherforsevendays = async (city) => {
   }
 };
 
-
 const search = document.getElementById("form");
 search.addEventListener("click", () => {
   const searchedValue = document.getElementById("searchbar").value;
@@ -95,6 +92,18 @@ search.addEventListener("click", () => {
   }
   fetchWeather(searchedValue);
   weatherforsevendays(searchedValue);
+});
+
+document.getElementById("searchbar").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const searchedValue = document.getElementById("searchbar").value;
+    if (!searchedValue) {
+      alert("Enter a city to search");
+      return false;
+    }
+    fetchWeather(searchedValue);
+    weatherforsevendays(searchedValue);
+  }
 });
 
 //function to handle form submission
