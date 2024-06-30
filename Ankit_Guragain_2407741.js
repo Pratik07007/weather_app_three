@@ -56,11 +56,16 @@ window.onload = function () {
 };
 
 const weatherforsevendays = async (city) => {
+  const response = await fetch(`./sevenDays.php?city=${city}`);
+  const data = await response.json();
+  //   console.log(data);
+  localStorage.setItem(`sevenDays_${city}`, JSON.stringify(data));
+
+  sevenDays(data);
+};
+
+const sevenDays = (data) => {
   try {
-    const response = await fetch(`./sevenDays.php?city=${city}`);
-    const data = await response.json();
-    //   console.log(data);
-    localStorage.setItem(`sevenDays${city}`, JSON.stringify(data));
     let tb = document.querySelector("#tb");
     tb.innerHTML = ""; // Clear existing table rows
 
@@ -86,24 +91,72 @@ const weatherforsevendays = async (city) => {
 const search = document.getElementById("form");
 search.addEventListener("click", () => {
   const searchedValue = document.getElementById("searchbar").value;
-  if (!searchedValue) {
-    alert("Enter a city to search");
-    return false;
+  const oneDayLocalStorage = JSON.parse(
+    localStorage.getItem(`oneDay_${searchedValue}`)
+  );
+  const sevenDaysLocalStorage = JSON.parse(
+    localStorage.getItem(`sevenDays_${searchedValue}`)
+  );
+  console.log(oneDayLocalStorage)
+  console.log(sevenDaysLocalStorage)
+  try {
+    if (oneDayLocalStorage && sevenDaysLocalStorage) {
+      let currentTime = new Date().getTime() / 1000; //in sec
+      if (currentTime - parseInt(oneDayLocalStorage["timestamp"]) > 10800) {
+        const searchedValue = document.getElementById("searchbar").value;
+        if (!searchedValue) {
+          alert("Enter a city to search");
+          return false;
+        }
+        fetchWeather(searchedValue);
+        weatherforsevendays(searchedValue);
+      } else {
+        insertWeatherDetails(oneDayLocalStorage);
+        sevenDays(sevenDaysLocalStorage)
+      }
+    } else {
+      const searchedValue = document.getElementById("searchbar").value;
+      fetchWeather(searchedValue);
+      weatherforsevendays(searchedValue);
+    }
+  } catch (error) {
+    return;
   }
-  fetchWeather(searchedValue);
-  weatherforsevendays(searchedValue);
 });
 
 document.getElementById("searchbar").addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     const searchedValue = document.getElementById("searchbar").value;
-    if (!searchedValue) {
-      alert("Enter a city to search");
-      return false;
+    const oneDayLocalStorage = JSON.parse(
+      localStorage.getItem(`oneDay_${searchedValue}`)
+    );
+    const sevenDaysLocalStorage = JSON.parse(
+      localStorage.getItem(`sevenDays_${searchedValue}`)
+    );
+    console.log(oneDayLocalStorage)
+    console.log(sevenDaysLocalStorage)
+    try {
+      if (oneDayLocalStorage && sevenDaysLocalStorage) {
+        let currentTime = new Date().getTime() / 1000; //in sec
+        if (currentTime - parseInt(oneDayLocalStorage["timestamp"]) > 10800) {
+          const searchedValue = document.getElementById("searchbar").value;
+          if (!searchedValue) {
+            alert("Enter a city to search");
+            return false;
+          }
+          fetchWeather(searchedValue);
+          weatherforsevendays(searchedValue);
+        } else {
+          insertWeatherDetails(oneDayLocalStorage);
+          sevenDays(sevenDaysLocalStorage)
+        }
+      } else {
+        const searchedValue = document.getElementById("searchbar").value;
+        fetchWeather(searchedValue);
+        weatherforsevendays(searchedValue);
+      }
+    } catch (error) {
+      return;
     }
-    fetchWeather(searchedValue);
-    weatherforsevendays(searchedValue);
   }
 });
-
-//function to handle form submission
